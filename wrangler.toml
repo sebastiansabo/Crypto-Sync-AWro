@@ -1,3 +1,8 @@
 name = "crypto-sync-awro"
 main = "crypto_worker.js"
 compatibility_date = "2025-10-08"
+
+# Non‑sensitive variables can be defined here. For secrets, use Wrangler’s secret storage.
+[vars]
+SHOP_URL = "cb6c17-2.myshopify.com"
+CMC_CONVERT = "USD"
