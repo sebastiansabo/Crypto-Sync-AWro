@@ -8,14 +8,14 @@
  * Rates are written into the `custom` namespace under the keys defined below,
  * along with separate date metafields tracking when the values were last updated.
  * Prices are fetched in the fiat currency specified by the `CMC_CONVERT`
- * environment variable (default USD).
+ * environment variable (default EUR).
  *
  * Required environment variables:
  *   - SHOP_URL:    your-shop.myshopify.com (without protocol)
  *   - SHOP_TOKEN:  Admin API access token with read/write metafields scope
  *   - CMC_API_KEY: CoinMarketCap API key (pro API)
  * Optional environment variables:
- *   - CMC_CONVERT: Fiat currency to convert to (e.g. "USD", "RON"). Defaults to "USD".
+ *   - CMC_CONVERT: Fiat currency to convert to (e.g. "EUR", "RON"). Defaults to "EUR".
  *   - API_VERSION: Shopify API version (default "2024-04")
  *   - RUN_KEY:     Pass ?key=<RUN_KEY> to /run to authorize manual runs
  */
@@ -67,7 +67,7 @@ async function run(env, { force }) {
   const todayRO = romaniaISODate(new Date());
 
   // Fetch latest BTC and EGLD prices
-  const convert  = env.CMC_CONVERT || "USD";
+  const convert  = env.CMC_CONVERT || "EUR";
   const rates    = await fetchCMC(env, ["BTC", "EGLD"], convert);
   const btcVal   = rates.BTC;
   const egldVal  = rates.EGLD;
